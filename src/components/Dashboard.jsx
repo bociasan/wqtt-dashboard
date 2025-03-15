@@ -12,14 +12,16 @@ const USE_PROXY = false
 const WQTT_URL = "https://dash.wqtt.ru"
 
 
+const CREATE_CONST = (URL) => {
+    return (USE_PROXY ? '' : WQTT_URL) + URL
+}
+
 const DEVICES_URL = CREATE_CONST("/api/devices");  // Use relative path for devices
 export const DEVICE_DETAILS_URL = CREATE_CONST("/api/devices/");  // Use relative path for device details
 const BROKER_URL = CREATE_CONST("/api/broker");  // Use relative path for device details
 const TYPES_URL = CREATE_CONST("/api/devices/types");
 
-const CREATE_CONST = (URL) => {
-    return (USE_PROXY ? '' : WQTT_URL) + URL
-}
+
 
 export default function Dashboard() {
     const [devices, setDevices] = useState([]);
