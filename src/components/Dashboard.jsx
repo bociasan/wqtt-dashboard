@@ -7,10 +7,19 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import mqtt from "mqtt";
 import Device from "./Device";
 
-const DEVICES_URL = "/api/devices";  // Use relative path for devices
-export const DEVICE_DETAILS_URL = "/api/devices/";  // Use relative path for device details
-const BROKER_URL = "/api/broker";  // Use relative path for device details
-const TYPES_URL = "/api/devices/types"
+const USE_PROXY = false
+
+const WQTT_URL = "https://dash.wqtt.ru"
+
+
+const DEVICES_URL = CREATE_CONST("/api/devices");  // Use relative path for devices
+export const DEVICE_DETAILS_URL = CREATE_CONST("/api/devices/");  // Use relative path for device details
+const BROKER_URL = CREATE_CONST("/api/broker");  // Use relative path for device details
+const TYPES_URL = CREATE_CONST("/api/devices/types");
+
+const CREATE_CONST = (URL) => {
+    return (USE_PROXY ? '' : WQTT_URL) + URL
+}
 
 export default function Dashboard() {
     const [devices, setDevices] = useState([]);
@@ -151,7 +160,7 @@ export default function Dashboard() {
 
     const mqtt_publish = (topic, message, retain = false) => {
         if (client && connected) {
-            client.publish(topic, message, { retain }, () => {
+            client.publish(topic, message, {retain}, () => {
                 console.log(`Message "${message}" sent to ${topic} with retain=${retain}`);
             });
         }
@@ -177,7 +186,8 @@ export default function Dashboard() {
                     gap: "16px"
                 }}>
                     {devices.map((device) => (
-                        <Device key={device.id} device={device} token={token} types={types} mqtt_subscribe={mqtt_subscribe}
+                        <Device key={device.id} device={device} token={token} types={types}
+                                mqtt_subscribe={mqtt_subscribe}
                                 append_mqtt_message_handler={append_mqtt_message_handler} mqtt_publish={mqtt_publish}/>
                     ))}
                 </div>
