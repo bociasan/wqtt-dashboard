@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wqtt-dashboard/static/css/main.f855e6bc.css",
-    "main.js": "/wqtt-dashboard/static/js/main.5e271ff8.js",
+    "main.js": "/wqtt-dashboard/static/js/main.a5c88c51.js",
     "static/js/453.caf15cfc.chunk.js": "/wqtt-dashboard/static/js/453.caf15cfc.chunk.js",
     "index.html": "/wqtt-dashboard/index.html",
     "main.f855e6bc.css.map": "/wqtt-dashboard/static/css/main.f855e6bc.css.map",
-    "main.5e271ff8.js.map": "/wqtt-dashboard/static/js/main.5e271ff8.js.map",
+    "main.a5c88c51.js.map": "/wqtt-dashboard/static/js/main.a5c88c51.js.map",
     "453.caf15cfc.chunk.js.map": "/wqtt-dashboard/static/js/453.caf15cfc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.5e271ff8.js"
+    "static/js/main.a5c88c51.js"
   ]
 }
