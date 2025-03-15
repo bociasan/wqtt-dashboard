@@ -7,7 +7,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import mqtt from "mqtt";
 import Device from "./Device";
 
-const USE_PROXY = false
+const USE_PROXY = true
 
 const WQTT_URL = "https://dash.wqtt.ru"
 
@@ -20,7 +20,6 @@ const DEVICES_URL = CREATE_CONST("/api/devices");  // Use relative path for devi
 export const DEVICE_DETAILS_URL = CREATE_CONST("/api/devices/");  // Use relative path for device details
 const BROKER_URL = CREATE_CONST("/api/broker");  // Use relative path for device details
 const TYPES_URL = CREATE_CONST("/api/devices/types");
-
 
 
 export default function Dashboard() {
@@ -50,7 +49,11 @@ export default function Dashboard() {
     const fetchDevices = () => {
         try {
             axios.get(DEVICES_URL, {
-                headers: {Authorization: `Token ${token}`},
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Token ${token}`
+                },
+                withCredentials: true
             }).then(response => {
                 if (response.data.result === "ok") {
                     const old = response.data.devices
@@ -117,7 +120,9 @@ export default function Dashboard() {
     const fetchBroker = () => {
         try {
             axios.get(BROKER_URL, {
-                headers: {Authorization: `Token ${token}`},
+                headers: {"Content-Type": "application/json",Authorization: `Token ${token}`},
+                withCredentials:true,
+                withXSRFToken:true
             }).then(response => {
                 // console.log(response.data)
                 if (response.data) {

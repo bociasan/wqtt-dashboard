@@ -1,6 +1,7 @@
 {
   "name": "mqtt-web-dash",
   "homepage": "https://bociasan.github.io/wqtt-dashboard",
+  "proxy": "https://dash.wqtt.ru",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
